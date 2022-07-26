@@ -1,0 +1,40 @@
+{
+  "name": "Приглашение на свадьбу",
+  "description": "Свадьба Ариши и Андрюши состоится 4го августа, и они будут рады видель вас там",
+  "background_color": "#fff",
+  "theme_color": "#fff",
+  "display": "minimal-ui",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "assets/img/icon_48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/icon_72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/icon_96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/icon_144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/icon_168.png",
+      "sizes": "168x168",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/icon_192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

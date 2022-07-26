@@ -1,0 +1,720 @@
+@font-face {
+    font-family: 'snell';
+    src: url('assets/fonts/snell/font.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'caviar-dreams';
+    src: url('assets/fonts/caviar/font_1.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(-20px);
+    }
+    25% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(20px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'caviar-dreams', Helvetica, sans-serif;
+}
+h1, h2, h3, h4, h5, .styled {
+    font-family: 'snell', serif;
+    font-weight: 500;
+    color: #018767;
+}
+
+h2 {
+    font-size: 32px;
+    line-height: 44px;
+    letter-spacing: initial;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
+}
+.link {
+    border-bottom: 1px dashed #3c5034;
+}
+.styled {
+    font-size: 28px;
+    line-height: 36px;
+    white-space: nowrap;
+}
+
+.container {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.54px;
+    color: #3c5034;
+}
+
+.viewport {
+    width: 100%;
+    max-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+}
+
+.helper {
+    margin: auto;
+    width: 33%;
+    display: flex;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    animation: shake 1s linear;
+    position: sticky;
+    bottom: 0;
+}
+
+.helper svg {
+    width: 40px;
+}
+
+/* ================================================================ */
+/* ---- SCROLL POINTS --------------------------------------------- */
+/* ================================================================ */
+.breakpoints {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: auto;
+    overflow:auto;
+}
+
+.point {
+    width: 100vw;
+    min-width: 100vw;
+    height: 100vh;
+}
+
+/* ================================================================ */
+/* ---- CLOUDS ---------------------------------------------------- */
+/* ================================================================ */
+
+.sky {
+    margin: auto;
+    width: 100%;
+    height: 50vh;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+.sky .entry {
+    position: absolute;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.sky .entry img {
+    width: 100%;
+    height: auto;
+}
+
+.entry_1 {
+    width: 20.78vw;
+    left: -5.57vw;
+}
+.entry_2 {
+    width: 25.72vw;
+    left: .63vw;
+}
+.entry_3 {
+    width: 26.92vw;
+    left: 17.34vw;
+}
+.entry_4 {
+    width: 24.84vw;
+    left: 54.27vw;
+}
+.entry_5 {
+    width: 10.62vw;
+    left: 60.79vw;
+}
+.entry_6 {
+    width: 23.48vw;
+    left: 72.18vw;
+}
+.entry_7 {
+    width: 35.31vw;
+    left: 79.84vw;
+}
+.entry_8 {
+    width: 30.36vw;
+    left: 100.15vw;
+}
+.entry_9 {
+    width: 15.26vw;
+    left: 109.32vw;
+}
+.entry_10 {
+    width: 17.81vw;
+    left: 108.02vw;
+}
+.entry_11 {
+    width: 15.36vw;
+    left: 121.4vw;
+}
+.entry_12 {
+    width: 36.97vw;
+    left: 110.41vw;
+}
+.entry_13 {
+    width: 6.82vw;
+    left: 108.59vw;
+    bottom: 68.09%;
+}
+.entry_14 {
+    width: 6.09vw;
+    left: 58.22vw;
+    bottom: 52.38%;
+}
+.entry_15 {
+    width: 4.63vw;
+    left: 96.92vw;
+    bottom: 42.14%;
+}
+.entry_16 {
+    width: 3.69vw;
+    left: 26.77vw;
+    bottom: 65.71%;
+}
+.entry_17 {
+    width: 5.67vw;
+    left: 103.9vw;
+    bottom: 80.95%;
+}
+.entry_18 {
+    width: 6.71vw;
+    left: 119.89vw;
+    bottom: 51.66%;
+}
+.entry_19 {
+    width: 2.6vw;
+    left: 108.02vw;
+    bottom: 36.19%;
+}
+.entry_20 {
+    width: 9.27vw;
+    left: 33.54vw;
+    bottom: 16.19%;
+}
+.entry_21 {
+    width: 7.29vw;
+    left: 54.79vw;
+    bottom: 50.71%;
+}
+
+/* ================================================================ */
+/* ---- PAGES ----------------------------------------------------- */
+/* ================================================================ */
+.pages {
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.page {
+    margin: auto;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+
+.page._active {
+    opacity: 1;
+    z-index: 1;
+}
+.page .frame {
+    width: 100vw;
+}
+.page .frame, .page .container {
+    grid-column: 1;
+    grid-row: 1;
+}
+/* ================================================================ */
+/* ---- WELCOME --------------------------------------------------- */
+/* ================================================================ */
+
+.page-welcome .container {
+    display: none;
+}
+
+.page-welcome .frame {
+    width: 100%;
+}
+
+.logo-piece {
+    transform-box: view-box;
+    transition: all .3s;
+}
+
+.logo-leafs-1:hover {
+    transform: translate(0, 3px) scale(1.05);
+}
+
+.logo-leafs-2:hover {
+    transform: translate(4px, 5px) rotate(1deg);
+}
+
+.logo-leafs-3:hover {
+    transform: rotate(2deg);
+}
+
+.logo-monstera-1:hover {
+    transform: rotate(1deg);
+}
+
+.logo-monstera-2:hover {
+    transform: rotate(-1deg);
+}
+
+.logo-monstera-3:hover {
+    transform: rotate(1deg);
+}
+
+.logo-monstera-4:hover {
+    transform: translate(-5px, 2px);
+}
+
+.logo-flowers-1:hover {
+    transform: rotate(1deg);
+
+}
+
+.logo-flowers-2:hover {
+    transform: rotate(2deg);
+}
+
+.logo-flowers-3:hover {
+    transform: translate(-5px, 2px);
+}
+
+.logo-flowers-4:hover {
+    transform: translate(-8px, 2px);
+}
+
+.logo-flowers-5:hover {
+    transform: translate(-5px, 2px) rotate(1deg);
+}
+
+.logo-flowers-6:hover {
+    transform: translate(-8px, 2px) rotate(2deg);
+}
+
+/* ================================================================ */
+/* ---- COMMON ---------------------------------------------------- */
+/* ================================================================ */
+.page-common .container {
+    margin: auto;
+    width: 70vw;
+    padding: 0 25px;
+    text-align: center;
+}
+
+.visitor {
+    font-family: 'snell', serif ;
+}
+
+/* ================================================================ */
+/* ---- DATE ------------------------------------------------------ */
+/* ================================================================ */
+
+.page-date .container {
+    margin: auto;
+    width: 75vw;
+    height: 30vh;
+    background-color: transparent;
+}
+
+.page-date .container h2 {
+    text-align: center;
+}
+
+.page-date .container p {
+    margin: 1vh 0;
+    text-align: center;
+}
+
+.page-date .container .divider {
+    margin: auto;
+    width: 70px;
+    text-align: center;
+    position: relative;
+}
+.page-date .container .divider:before,
+.page-date .container .divider:after {
+    content: '';
+    margin: auto;
+    width: 50px;
+    height: 1px;
+    background-color: #018767;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+}
+.page-date .container .divider:before {
+    right: 100%;
+}
+.page-date .container .divider:after {
+    left: 100%;
+}
+    /*.page-date .hex {*/
+/*    margin-top: 4.5vh;*/
+/*    margin-left: -6vw;*/
+/*    width: 94vw;*/
+/*    height: 47vh;*/
+/*    overflow: hidden;*/
+/*    visibility: hidden;*/
+/*    transform: rotate(104.15deg);*/
+/*    position: relative;*/
+/*    z-index: -1;*/
+/*}*/
+/*.page-date .hex .wrapper {*/
+/*    overflow: hidden;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    transform: rotate(-60deg);*/
+/*}*/
+/*.page-date .hex .inner {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    transform: rotate(-60deg);*/
+/*}*/
+
+/* ================================================================ */
+/* ---- PLACE ----------------------------------------------------- */
+/* ================================================================ */
+.page-place .frame {
+    width: 120vw;
+}
+.page-place .container {
+    margin: auto;
+    padding: 20px;
+    width: 60vw;
+    height: 70vh;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+.page-place .container h2 {
+    margin-top: 0;
+    text-align: center;
+}
+.page-place .places {
+    text-align: center;
+    grid-row: 1;
+    grid-column: 1;
+    opacity: 0;
+    transition: opacity .75s;
+}
+
+.page-place  .places._active {
+    opacity: 1;
+    /*transform: translateY(0);*/
+    transition: opacity 1.25s;
+}
+
+/* ================================================================ */
+/* ---- CONTACTS -------------------------------------------------- */
+/* ================================================================ */
+.page-contacts .frame {
+    margin-left: -5vw;
+    width: 120vw;
+}
+.page-contacts .container {
+    padding: 40px 20px;
+    margin: -3vh auto 0;
+    width: 65vw;
+    height: 60vh;
+    background-color: rgba(255, 255, 255, .85);
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-contacts .rules.call {
+    margin-top: -10vh;
+}
+.page-contacts .rules {
+    text-align: center;
+    grid-row: 1;
+    grid-column: 1;
+    opacity: 0;
+    transition: opacity .75s;
+}
+
+.page-contacts  .rules._active {
+    opacity: 1;
+    transition: opacity 1.25s;
+}
+
+.modal {
+    margin: auto;
+    display: none;
+    position: absolute;
+    z-index: 5;
+    bottom: 25vh;
+    right: 0;
+    left: 0;
+}
+
+.modal._show {
+    display: block;
+}
+.modal .list {
+    margin: auto;
+    width: 60vw;
+}
+.modal .list a {
+    padding: 6px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-decoration: none;
+    color: #3c5034;
+}
+
+.modal .list a:hover {
+    background-color: #fff;
+}
+
+.modal .list svg {
+    margin-right: 12px;
+    width: 24px;
+    height: 24px;
+}
+
+@media (min-height: 650px) {
+    .page-contacts .container {
+        margin-top: -2vh;
+        padding: 30px 20px;
+        height: 53vh;
+    }
+    .modal {
+        bottom: 25vh;
+    }
+}
+
+@media (min-width: 420px) {
+    .page-common .container {
+        height: calc(70vw * 1.24788);
+    }
+}
+
+@media (min-width: 600px) {
+
+    h2 {
+        font-size: 44px;
+        line-height: 56px;
+    }
+    .styled {
+        font-size: 32px;
+        line-height: 44px;
+    }
+
+    .container, .modal {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .page-common .container {
+        padding: 50px;
+        width: 60vw;
+        height: calc(60vw * 1.24788);
+    }
+}
+
+@media (min-width: 768px) {
+    .page {
+        margin: auto;
+    }
+
+    .page-welcome {
+        margin: auto;
+        width: 372px;
+        height: 354px;
+    }
+
+    h2 {
+        font-size: 44px;
+    }
+
+    .container, .modal {
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .page-date {
+        width: 780px;
+        height: 780px;
+    }
+
+    .page-place {
+        width: 640px;
+        height: 720px;
+    }
+    .page-contacts {
+        width: 640px;
+        height: 720px;
+    }
+
+    .modal .list a {
+        padding: 12px 24px;
+        margin-bottom: 8px;
+    }
+}
+
+@media (min-width: 800px) {
+    h2 {
+        font-size: 48px;
+    }
+    .container {
+        font-size: 24px;
+        line-height: 32px;
+    }
+}
+
+@media (min-width: 900px) {
+    h2 {
+        font-size: 64px;
+        line-height: 72px;
+    }
+    .container {
+        font-size: 32px;
+        line-height: 48px;
+    }
+    .page-common .container {
+        padding: 70px 0;
+    }
+}
+
+@media (min-width: 414px) and (min-height: 896px) {
+    .page-contacts .container {
+        height: 50vh;
+    }
+    .modal {
+        bottom: 28vh;
+    }
+}
+@media (min-width: 390px) and (min-height: 844px) {
+    .page-contacts .container {
+        height: 50vh;
+    }
+    .modal {
+        bottom: 28vh;
+    }
+}
+
+
+@media (min-width: 1080px) {
+    .page {
+        margin: auto;
+    }
+    h2 {
+        font-size: 32px;
+        line-height: 44px;
+    }
+
+    .styled {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .container, .modal {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .page .frame {
+        width: 100%;
+        height: 100%;
+
+    }
+    .page .container {
+        width: 45%;
+        height: 80%;
+    }
+
+    .page-welcome {
+        margin: auto;
+        width: 372px;
+        height: 354px;
+    }
+
+    .page-common,
+    .page-common .frame {
+        margin: auto;
+        width: 640px;
+        height: 720px;
+    }
+
+    .page-date {
+        width: 480px;
+        height: 480px;
+    }
+
+    .page-date .container {
+        margin-top: 100px;
+    }
+
+    .page-contacts {
+        width: 640px;
+        height: 720px;
+    }
+    .page-contacts .frame {
+        margin-left: 0;
+    }
+    .page-contacts .container {
+        width: 50%;
+        height: 70%;
+        position: relative;
+        left: 12px;
+    }
+    .modal {
+        width: 240px;
+    }
+}
+
+@media (min-width: 1140px) {
+    .helper {
+        display: none;
+    }
+}
