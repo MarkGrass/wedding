@@ -163,6 +163,15 @@ if (search) {
             call='ты можешь';
             gift = 'ты подаришь';
             break;
+        case 'c6GBHmOG0':
+            names = 'Галина Алексеевна';
+            isOfficial = true;
+            count = 'Дорогая';
+            person ='вас';
+            meet ='вами';
+            call='вы можете';
+            gift = 'вы подарите';
+            break;
         default:
             names = 'Друг';
             isOfficial = true;
