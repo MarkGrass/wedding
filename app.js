@@ -5,7 +5,7 @@ const clouds = Array.from(sky.children);
 const breakpoints = document.querySelector('.breakpoints');
 const pages = document.querySelector('.pages');
 const frames = Array.from(pages.children);
-const contactsModal = document.querySelector('.modal');
+const scroller = document.querySelector('.helper');
 
 const welcomeFrame = pages.querySelector('.logo-frame');
 const welcomeFrameLength = Number(welcomeFrame.getAttribute('r')) * Math.PI * 2;
@@ -19,7 +19,7 @@ const commonFrameMultiplier =  commonFrameLength / viewportWidth * 2
 
 const dateFrame1 = pages.querySelector('.date-frame-1');
 const dateFrame2 = pages.querySelector('.date-frame-2');
-const dateFrameLength = 7132;
+const dateFrameLength = 960;
 const dateFrameDashOffset = Number(dateFrame1.getAttribute('stroke-dashoffset') || 0);
 const dateFrameMultiplier = dateFrameLength / viewportWidth * 2;
 
@@ -39,8 +39,13 @@ const rulesCall = pages.querySelector('.page-contacts .call');
 const contactsFrameLength = Number((contactsFrame.width.baseVal.value + contactsFrame.height.baseVal.value) * 2);
 const contactsFrameDashOffset = Number(contactsFrame.getAttribute('stroke-dashoffset') || 0);
 const contactsFrameMultiplier = contactsFrameLength / viewportWidth * 2;
+let activeIndex = 0;
 
 const setActivePage = (index) => {
+    if(frames[index].classList.contains('_active')) {
+        return;
+    }
+    activeIndex = index;
     frames.forEach(item => {
         item.classList.remove('_active');
     });
@@ -53,10 +58,13 @@ const invertScroll = (event) => {
     }
 
     breakpoints.scrollLeft -= event.deltaY + event.deltaX;
+    // start -= event.deltaY + event.deltaX;
+
     event.preventDefault();
+    // handler()
 }
 
-const handler = (event) => {
+const handler = () => {
     const value = breakpoints.scrollLeft;
 
     clouds.forEach((cloud, index) => {
@@ -139,13 +147,11 @@ const handler = (event) => {
 
     if (value > viewportWidth/2 && value < viewportWidth) {
         setActivePage(0);
-        contactsModal.classList.remove('_show');
         welcomeFrame.setAttribute('stroke-dashoffset', `${welcomeFrameDashOffset +  (value-viewportWidth/2) * welcomeFrameMultiplier}`);
     }
 
     if (value >= viewportWidth && value < viewportWidth * 1.5) {
         setActivePage(1);
-        contactsModal.classList.remove('_show');
         if ((value - viewportWidth) * commonFrameMultiplier < commonFrameDashOffset) {
             commonFrame.setAttribute('stroke-dashoffset', `${commonFrameDashOffset + (value - viewportWidth) * commonFrameMultiplier}`);
             commonFrame.setAttribute('stroke-dasharray', `${(value - viewportWidth) * commonFrameMultiplier} ${commonFrameLength}`);
@@ -161,18 +167,18 @@ const handler = (event) => {
 
     if (value >= viewportWidth * 2 && value < viewportWidth * 3) {
         setActivePage(2);
-        contactsModal.classList.remove('_show');
+        console.log(dateFrame1);
         dateFrame1.setAttribute('stroke-dashoffset', `${dateFrameDashOffset + (value - viewportWidth * 2) * dateFrameMultiplier}`);
         if (value >= viewportWidth * 2.1) {
             dateFrame2.setAttribute('stroke-dashoffset', `${dateFrameDashOffset + (value - viewportWidth * 2.1) * dateFrameMultiplier}`);
         }
     }
 
-    if (value >= viewportWidth * 3) {
+    if (value >= viewportWidth * 3 && value < viewportWidth * 5) {
         setActivePage(3);
-        contactsModal.classList.remove('_show');
         placeOfficial.classList.add('_active');
         placeRest.classList.remove('_active');
+
         placeFrame1.setAttribute('stroke-dashoffset', `${placeFrameDashOffset + (value - viewportWidth * 3) * placeFrameMultiplier}`);
         if (value >= viewportWidth * 3.1) {
             placeFrame2.setAttribute('stroke-dashoffset', `${placeFrameDashOffset + (value - viewportWidth * 3.1) * placeFrameMultiplier}`);
@@ -192,7 +198,6 @@ const handler = (event) => {
         rulesGifts.classList.add('_active');
         rulesChild.classList.remove('_active');
         rulesCall.classList.remove('_active');
-        contactsModal.classList.remove('_show');
 
         if(value < Math.round(viewportWidth * 6.5)) {
             contactsFrame.setAttribute('stroke-dashoffset', `${contactsFrameDashOffset + (value - viewportWidth * 4) * contactsFrameMultiplier}`);
@@ -202,13 +207,11 @@ const handler = (event) => {
             rulesChild.classList.add('_active');
             rulesGifts.classList.remove('_active');
             rulesCall.classList.remove('_active');
-            contactsModal.classList.remove('_show');
         }
         if (value >= viewportWidth * 7) {
             rulesGifts.classList.remove('_active');
             rulesChild.classList.remove('_active');
             rulesCall.classList.add('_active');
-            contactsModal.classList.add('_show');
         }
     }
 }
@@ -343,22 +346,9 @@ entries[3].innerHTML = meet;
 entries[4].innerHTML = gift;
 entries[5].innerHTML = call;
 
-const activities = (event) => {
-    const activePage = document.querySelector('.page._active ');
 
-    if(activePage.classList.contains('page-date')) {
-        if(event.clientY < viewport.clientHeight / 2) {
-            window.open('https://www.instagram.com/explore/locations/110681295/');
-        } else  {
-            window.open('https://www.instagram.com/art.to.eat/', '_blank');
-        }
-    }
-    if (activePage.classList.contains('page-place')) {
-        if (placeOfficial.classList.contains('_active')) {
-            window.open('https://yandex.ru/maps/43/kazan/?ll=49.107951%2C55.812090&mode=routes&rtext=~55.812880%2C49.108288&rtt=auto&ruri=~ymapsbm1%3A%2F%2Forg%3Foid%3D5902021407&z=16.77', '_blank')
-        } else {
-            window.open('https://yandex.ru/maps/43/kazan/?ll=49.116130%2C55.788570&mode=routes&rtext=~55.787574%2C49.108678&rtt=auto&ruri=~&z=15.27', '_blank')
-        }
-    }
-}
-document.addEventListener('click', activities)
+scroller.addEventListener('click', () => {
+    console.log('click');
+    console.log(activeIndex);
+    breakpoints.scrollBy(viewportWidth, 0);
+})
