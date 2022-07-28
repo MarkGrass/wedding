@@ -58,8 +58,12 @@ a:visited {
     text-decoration: none;
     display: block;
 }
+
 .link {
-    /*border-bottom: 1px dashed #3c5034;*/
+    margin: auto;
+    font-size: 12px;
+    text-align: center;
+    border-bottom: 1px dashed #3c5034;
 }
 .styled {
     font-size: 28px;
@@ -73,6 +77,7 @@ a:visited {
     line-height: 24px;
     letter-spacing: 0.54px;
     color: #3c5034;
+    text-align: center;
 }
 
 .viewport {
@@ -253,7 +258,7 @@ a:visited {
     width: 100%;
     height: 100vh;
     position: absolute;
-    z-index: -3;
+    z-index: 1;
     bottom: 0;
     right: 0;
     left: 0;
@@ -261,12 +266,13 @@ a:visited {
 }
 
 .page {
-    margin: auto;
+    margin: -12vh auto 0;
     display: grid;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     position: absolute;
+    z-index: -1;
     opacity: 0;
     bottom: 0;
     right: 0;
@@ -360,11 +366,16 @@ a:visited {
 /* ================================================================ */
 .page-common .container {
     margin: auto;
-    width: 70vw;
-    padding: 0 25px;
     text-align: center;
 }
 
+.page-common .container h2 {
+    margin-top: 30px;
+    font-size: 28px;
+}
+.page-common .container p {
+    padding: 0 25px;
+}
 .visitor {
     font-family: 'snell', serif ;
 }
@@ -375,17 +386,26 @@ a:visited {
 
 .page-date .container {
     margin: auto;
-    width: 75vw;
-    height: 30vh;
+    height: 100%;
     background-color: transparent;
+}
+
+.date-official,
+.date-rest {
+    display: none;
+}
+.date-official._active,
+.date-rest._active {
+    display: block;
 }
 
 .page-date .container h2 {
     text-align: center;
+    margin: 0;
 }
 
 .page-date .container p {
-    margin: 1vh 0;
+    margin: 0;
     text-align: center;
 }
 
@@ -444,11 +464,11 @@ a:visited {
 .page-place .container {
     margin: auto;
     padding: 20px;
-    width: 60vw;
-    height: 70vh;
     display: grid;
     align-items: center;
     justify-content: center;
+    width: 80%;
+    height: 90%;
 }
 .page-place .container h2 {
     margin-top: 0;
@@ -464,7 +484,6 @@ a:visited {
 
 .page-place  .places._active {
     opacity: 1;
-    /*transform: translateY(0);*/
     transition: opacity 1.25s;
 }
 
@@ -473,13 +492,10 @@ a:visited {
 /* ================================================================ */
 .page-contacts .frame {
     margin-left: -5vw;
-    width: 120vw;
 }
 
 .page-contacts .container {
     padding: 40px 20px;
-    margin: -3vh auto 0;
-    width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, .85);
     display: grid;
@@ -488,11 +504,8 @@ a:visited {
 }
 
 .page-contacts .rules {
-    transform: scale(5.58);
-    transform-origin: center;
 }
 .page-contacts .rules.call {
-    margin-top: -10vh;
 }
 .page-contacts .rules {
     text-align: center;
@@ -514,6 +527,7 @@ a:visited {
     margin: 18px auto 0;
 }
 .list a {
+    margin: 10px 0;
     padding: 6px 20px;
     display: flex;
     align-items: center;
@@ -529,132 +543,34 @@ a:visited {
 
 .list svg {
     margin-right: 8px;
+    width: 16px;
+    height: 16px;
 }
 
-.modal .list svg {
-    margin-right: 12px;
-    width: 24px;
-    height: 24px;
+.contacts-list {
+    margin: auto;
+    width: 70vw;
+    height: 70vh;
+    transform: translateX(100vh);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, .85);
+    box-shadow: 0 0 25px #3c5034;
+    position: fixed;
+    z-index: 20;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
 }
 
-@media (min-height: 650px) {
-    .page-contacts .container {
-    }
-    .modal {
-        bottom: 25vh;
-    }
+.contacts-list._active {
+    display: flex;
+    transform: translateX(0);
+    transition: all .5s;
 }
-
-@media (min-width: 420px) {
-    .page-common .container {
-        height: calc(70vw * 1.24788);
-    }
-}
-
-@media (min-width: 600px) {
-
-    h2 {
-        font-size: 44px;
-        line-height: 56px;
-    }
-    .styled {
-        font-size: 32px;
-        line-height: 44px;
-    }
-
-    .container, .modal {
-        font-size: 24px;
-        line-height: 32px;
-    }
-
-    .page-common .container {
-        padding: 50px;
-        width: 60vw;
-        height: calc(60vw * 1.24788);
-    }
-}
-
-@media (min-width: 768px) {
-    .page {
-        margin: auto;
-    }
-
-    .page-welcome {
-        margin: auto;
-        width: 372px;
-        height: 354px;
-    }
-
-    h2 {
-        font-size: 44px;
-    }
-
-    .container, .modal {
-        font-size: 20px;
-        line-height: 30px;
-    }
-
-    .page-date {
-        width: 780px;
-        height: 780px;
-    }
-
-    .page-place {
-        width: 640px;
-        height: 720px;
-    }
-    .page-contacts {
-        width: 640px;
-        height: 720px;
-    }
-
-    .modal .list a {
-        padding: 12px 24px;
-        margin-bottom: 8px;
-    }
-}
-
-@media (min-width: 800px) {
-    h2 {
-        font-size: 48px;
-    }
-    .container {
-        font-size: 24px;
-        line-height: 32px;
-    }
-}
-
-@media (min-width: 900px) {
-    h2 {
-        font-size: 64px;
-        line-height: 72px;
-    }
-    .container {
-        font-size: 32px;
-        line-height: 48px;
-    }
-    .page-common .container {
-        padding: 70px 0;
-    }
-}
-
-@media (min-width: 414px) and (min-height: 896px) {
-    .page-contacts .container {
-        height: 50vh;
-    }
-    .modal {
-        bottom: 28vh;
-    }
-}
-@media (min-width: 390px) and (min-height: 844px) {
-    .page-contacts .container {
-        height: 50vh;
-    }
-    .modal {
-        bottom: 28vh;
-    }
-}
-
 
 @media (min-width: 1080px) {
     .page {
@@ -681,8 +597,6 @@ a:visited {
 
     }
     .page .container {
-        width: 45%;
-        height: 80%;
     }
 
     .page-welcome {
@@ -698,13 +612,14 @@ a:visited {
         height: 720px;
     }
 
+    .page-common .container p {
+        padding: 0;
+    }
+
     .page-date {
-        width: 480px;
-        height: 480px;
     }
 
     .page-date .container {
-        margin-top: 100px;
     }
 
     .page-contacts {
@@ -715,18 +630,9 @@ a:visited {
         margin-left: 0;
     }
     .page-contacts .container {
-        width: 50%;
-        height: 70%;
-        position: relative;
-        left: 12px;
     }
     .modal {
         width: 240px;
     }
 }
 
-@media (min-width: 1140px) {
-    .helper {
-        display: none;
-    }
-}

@@ -1,7 +1,6 @@
 const viewport = document.querySelector('.viewport');
 const viewportWidth = viewport.clientWidth;
-const sky = document.querySelector('.sky');
-const clouds = Array.from(sky.children);
+const clouds = Array.from(viewport.querySelectorAll('.entry'));
 const breakpoints = document.querySelector('.breakpoints');
 const pages = document.querySelector('.pages');
 const frames = Array.from(pages.children);
@@ -19,19 +18,11 @@ const commonFrameMultiplier =  commonFrameLength / viewportWidth * 2
 
 const dateFrame1 = pages.querySelector('.date-frame-1');
 const dateFrame2 = pages.querySelector('.date-frame-2');
+const dateOfficial = pages.querySelector('.page-date .date-official');
+const dateRest = pages.querySelector('.page-date .date-rest');
 const dateFrameLength = 960;
 const dateFrameDashOffset = Number(dateFrame1.getAttribute('stroke-dashoffset') || 0);
 const dateFrameMultiplier = dateFrameLength / viewportWidth * 2;
-
-const placeFrame1 = pages.querySelector('.place-frame-1');
-const placeFrame2 = pages.querySelector('.place-frame-2');
-const placeFrame3 = pages.querySelector('.place-frame-3');
-const placeOfficial = pages.querySelector('.page-place .official');
-const placeRest = pages.querySelector('.page-place .rest');
-const placeFrameLength = Number((placeFrame1.width.baseVal.value + placeFrame1.height.baseVal.value) * 2);
-const placeFrameDashOffset = Number(placeFrame1.getAttribute('stroke-dashoffset') || 0);
-const placeFrameMultiplier = placeFrameLength / viewportWidth * 2;
-
 const contactsFrame = pages.querySelector('.contacts-frame');
 const rulesGifts = pages.querySelector('.page-contacts .gifts');
 const rulesChild = pages.querySelector('.page-contacts .child');
@@ -39,7 +30,147 @@ const rulesCall = pages.querySelector('.page-contacts .call');
 const contactsFrameLength = Number((contactsFrame.width.baseVal.value + contactsFrame.height.baseVal.value) * 2);
 const contactsFrameDashOffset = Number(contactsFrame.getAttribute('stroke-dashoffset') || 0);
 const contactsFrameMultiplier = contactsFrameLength / viewportWidth * 2;
+const modal = document.querySelector('.contacts-list');
 let activeIndex = 0;
+
+
+let isOfficial = false;
+let count = "Дорогой";
+let person = "тебя";
+let meet = "тобой";
+let names = 'Друг';
+let gift = 'ты подаришь';
+let call = 'ты можешь';
+const { search } = window.location;
+const entries = Array.from(document.querySelectorAll('.pages .box'));
+
+if (search) {
+    const query = search.replace(/\?g=|\?q=/, '');
+    switch (query) {
+        case 'fCNuQzJ0':
+            names = 'Мама и Папа';
+            isOfficial = true;
+            count = 'Дорогие';
+            person ='вас';
+            meet ='вами';
+            call='вы можете';
+            gift = 'вы подарите';
+            break;
+        case 'SCNuQDJ0':
+            names = 'Бабуля и Дедуля';
+            isOfficial = true;
+            count = 'Дорогие';
+            person ='вас';
+            meet ='вами';
+            call='вы можете';
+            gift = 'вы подарите';
+            break;
+        case 'YCNuQDK0':
+            names = 'Ирина и Роман';
+            count = 'Дорогие';
+            person ='вас';
+            meet ='вами';
+            call='вы можете';
+            gift = 'вы подарите';
+            break;
+        case 'cCNuQvJ0':
+            names = 'Марина и Алексей';
+            isOfficial = true;
+            count = 'Дорогие';
+            person ='вас';
+            meet ='вами';
+            call='вы можете';
+            gift = 'вы подарите';
+            break;
+        case 'QCNuQHJ0':
+            names = 'Анна и Булат';
+            isOfficial = true;
+            count = 'Дорогие';
+            person ='вас';
+            meet ='вами';
+            call='вы можете';
+            gift = 'вы подарите';
+            break;
+        case 'UCNuQHK0':
+            names = 'Дина и Александр';
+            isOfficial = false;
+            count = 'Дорогие';
+            person ='вас';
+            meet ='вами';
+            call='вы можете';
+            gift = 'вы подарите';
+            break;
+        case 'WCNuQLK0':
+            names = 'Евгения и Анатолий';
+            isOfficial = false;
+            count = 'Дорогие';
+            person ='вас';
+            meet ='вами';
+            call='вы можете';
+            gift = 'вы подарите';
+            break;
+        case 'QCNuQDJ0':
+            names = 'Айя и Арслан';
+            isOfficial = false;
+            count = 'Дорогие';
+            person ='вас';
+            meet ='вами';
+            call='вы можете';
+            gift = 'вы подарите';
+            break;
+        case 'BGNsQ3J0':
+            names = 'Анастасия';
+            isOfficial = true;
+            count = 'Дорогая';
+            person ='тебя';
+            meet ='тобой';
+            call='ты можешь';
+            gift = 'ты подаришь';
+            break;
+        case 'IGNsQHK0':
+            names = 'Александр';
+            isOfficial = false;
+            count = 'Дорогой';
+            person ='тебя';
+            meet ='тобой';
+            call='ты можешь';
+            gift = 'ты подаришь';
+            break;
+        case '0CdvQDJ0':
+            names = 'Андрей';
+            isOfficial = false;
+            count = 'Дорогой';
+            person ='тебя';
+            meet ='тобой';
+            call='ты можешь';
+            gift = 'ты подаришь';
+            break;
+        case 'zCduQDJ0':
+            names = 'Айгуль';
+            isOfficial = false;
+            count = 'Дорогая';
+            person ='тебя';
+            meet ='тобой';
+            call='ты можешь';
+            gift = 'ты подаришь';
+            break;
+        default:
+            names = 'Друг';
+            isOfficial = true;
+            count = 'Дорогой';
+            person ='тебя';
+            meet ='тобой';
+            call='ты можешь';
+            gift = 'ты подаришь';
+    }
+}
+
+entries[0].innerHTML = count;
+entries[1].innerHTML = names;
+entries[2].innerHTML = person;
+entries[3].innerHTML = meet;
+entries[4].innerHTML = gift;
+entries[5].innerHTML = call;
 
 const setActivePage = (index) => {
     if(frames[index].classList.contains('_active')) {
@@ -66,7 +197,7 @@ const invertScroll = (event) => {
 
 const handler = () => {
     const value = breakpoints.scrollLeft;
-
+    modal.classList.remove('_active');
     clouds.forEach((cloud, index) => {
         const {left, width} = cloud.getBoundingClientRect();
         let multiplier = 0;
@@ -167,51 +298,43 @@ const handler = () => {
 
     if (value >= viewportWidth * 2 && value < viewportWidth * 3) {
         setActivePage(2);
-        console.log(dateFrame1);
+        if(isOfficial) {
+            dateRest.classList.remove('_active');
+            dateOfficial.classList.add('_active');
+        } else {
+            dateOfficial.classList.remove('_active');
+            dateRest.classList.add('_active');
+        }
+
         dateFrame1.setAttribute('stroke-dashoffset', `${dateFrameDashOffset + (value - viewportWidth * 2) * dateFrameMultiplier}`);
         if (value >= viewportWidth * 2.1) {
             dateFrame2.setAttribute('stroke-dashoffset', `${dateFrameDashOffset + (value - viewportWidth * 2.1) * dateFrameMultiplier}`);
         }
     }
 
-    if (value >= viewportWidth * 3 && value < viewportWidth * 5) {
+    if (value >= viewportWidth * 3) {
         setActivePage(3);
-        placeOfficial.classList.add('_active');
-        placeRest.classList.remove('_active');
-
-        placeFrame1.setAttribute('stroke-dashoffset', `${placeFrameDashOffset + (value - viewportWidth * 3) * placeFrameMultiplier}`);
-        if (value >= viewportWidth * 3.1) {
-            placeFrame2.setAttribute('stroke-dashoffset', `${placeFrameDashOffset + (value - viewportWidth * 3.1) * placeFrameMultiplier}`);
-        }
-        if (value >= viewportWidth * 3.2) {
-            placeFrame3.setAttribute('stroke-dashoffset', `${placeFrameDashOffset + (value - viewportWidth * 3.2) * placeFrameMultiplier}`);
-        }
-
-        if(value >= viewportWidth * 4) {
-            placeOfficial.classList.remove('_active');
-            placeRest.classList.add('_active');
-        }
-    }
-
-    if (value >= viewportWidth * 5) {
-        setActivePage(4);
         rulesGifts.classList.add('_active');
         rulesChild.classList.remove('_active');
         rulesCall.classList.remove('_active');
 
-        if(value < Math.round(viewportWidth * 6.5)) {
+        if(value < Math.round(viewportWidth * 4.5)) {
             contactsFrame.setAttribute('stroke-dashoffset', `${contactsFrameDashOffset + (value - viewportWidth * 4) * contactsFrameMultiplier}`);
         }
 
-        if (value >= viewportWidth * 6) {
+        if (value >= viewportWidth * 4) {
             rulesChild.classList.add('_active');
             rulesGifts.classList.remove('_active');
             rulesCall.classList.remove('_active');
         }
-        if (value >= viewportWidth * 7) {
+        if (value >= viewportWidth * 5) {
+            activeIndex = 5;
             rulesGifts.classList.remove('_active');
             rulesChild.classList.remove('_active');
             rulesCall.classList.add('_active');
+        }
+        if (value >= viewportWidth * 6) {
+            setActivePage(2);
         }
     }
 }
@@ -221,134 +344,20 @@ breakpoints.addEventListener('wheel', invertScroll);
 breakpoints.addEventListener('mousewheel', invertScroll);
 breakpoints.addEventListener('scroll', handler);
 
-let count = "Дорогой";
-let person = "тебя";
-let meet = "тобой";
-let names = 'Друг';
-let gift = 'ты подаришь';
-let call = 'ты можешь';
-const { search } = window.location;
-const entries = Array.from(document.querySelectorAll('.pages .box'));
-
-if (search) {
-    const query = search.replace(/\?g=|\?q=/, '');
-    switch (query) {
-        case 'fCNuQzJ0':
-            names = 'Мама и Папа';
-            count = 'Дорогие';
-            person ='вас';
-            meet ='вами';
-            call='вы можете';
-            gift = 'вы подарите';
-            break;
-        case 'SCNuQDJ0':
-            names = 'Бабуля и Дедуля';
-            count = 'Дорогие';
-            person ='вас';
-            meet ='вами';
-            call='вы можете';
-            gift = 'вы подарите';
-            break;
-        case 'YCNuQDK0':
-            names = 'Ирина и Роман';
-            count = 'Дорогие';
-            person ='вас';
-            meet ='вами';
-            call='вы можете';
-            gift = 'вы подарите';
-            break;
-        case 'cCNuQvJ0':
-            names = 'Марина и Алексей';
-            count = 'Дорогие';
-            person ='вас';
-            meet ='вами';
-            call='вы можете';
-            gift = 'вы подарите';
-            break;
-        case 'QCNuQHJ0':
-            names = 'Анна и Булат';
-            count = 'Дорогие';
-            person ='вас';
-            meet ='вами';
-            call='вы можете';
-            gift = 'вы подарите';
-            break;
-        case 'UCNuQHK0':
-            names = 'Дина и Александр';
-            count = 'Дорогие';
-            person ='вас';
-            meet ='вами';
-            call='вы можете';
-            gift = 'вы подарите';
-            break;
-        case 'WCNuQLK0':
-            names = 'Евгения и Анатолий';
-            count = 'Дорогие';
-            person ='вас';
-            meet ='вами';
-            call='вы можете';
-            gift = 'вы подарите';
-            break;
-        case 'QCNuQDJ0':
-            names = 'Айя и Арслан';
-            count = 'Дорогие';
-            person ='вас';
-            meet ='вами';
-            call='вы можете';
-            gift = 'вы подарите';
-            break;
-        case 'BGNsQ3J0':
-            names = 'Анастасия';
-            count = 'Дорогая';
-            person ='тебя';
-            meet ='тобой';
-            call='ты можешь';
-            gift = 'ты подаришь';
-            break;
-        case 'IGNsQHK0':
-            names = 'Александр';
-            count = 'Дорогой';
-            person ='тебя';
-            meet ='тобой';
-            call='ты можешь';
-            gift = 'ты подаришь';
-            break;
-        case '0CdvQDJ0':
-            names = 'Андрей';
-            count = 'Дорогой';
-            person ='тебя';
-            meet ='тобой';
-            call='ты можешь';
-            gift = 'ты подаришь';
-            break;
-        case 'zCduQDJ0':
-            names = 'Айгуль';
-            count = 'Дорогая';
-            person ='тебя';
-            meet ='тобой';
-            call='ты можешь';
-            gift = 'ты подаришь';
-            break;
-        default:
-            names = 'Друг';
-            count = 'Дорогой';
-            person ='тебя';
-            meet ='тобой';
-            call='ты можешь';
-            gift = 'ты подаришь';
+document.addEventListener('click', () => {
+    if(activeIndex === 2) {
+        if(isOfficial) {
+            window.open('https://yandex.ru/maps/43/kazan/?ll=49.107951%2C55.812090&mode=routes&rtext=~55.812880%2C49.108288&rtt=auto&ruri=~ymapsbm1%3A%2F%2Forg%3Foid%3D5902021407&z=16.77', '_blank')
+        } else {
+            window.open('https://yandex.ru/maps/43/kazan/?ll=49.116130%2C55.788570&mode=routes&rtext=~55.787574%2C49.108678&rtt=auto&ruri=~&z=15.27', '_blank')
+        }
     }
-}
 
-entries[0].innerHTML = count;
-entries[1].innerHTML = names;
-entries[2].innerHTML = person;
-entries[3].innerHTML = meet;
-entries[4].innerHTML = gift;
-entries[5].innerHTML = call;
-
-
-scroller.addEventListener('click', () => {
-    console.log('click');
-    console.log(activeIndex);
-    breakpoints.scrollBy(viewportWidth, 0);
+    if (activeIndex === 5 ) {
+        if(!modal.classList.contains('_active')) {
+            modal.classList.add('_active');
+        } else {
+            modal.classList.remove('_active');
+        }
+    }
 })
