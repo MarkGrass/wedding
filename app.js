@@ -145,6 +145,15 @@ if (search) {
             call='ты можешь';
             gift = 'ты подаришь';
             break;
+        case '0CgfGHS0':
+            names = 'Анна';
+            isOfficial = false;
+            count = 'Дорогая';
+            person ='тебя';
+            meet ='тобой';
+            call='ты можешь';
+            gift = 'ты подаришь';
+            break;
         case 'zCduQDJ0':
             names = 'Айгуль';
             isOfficial = false;
